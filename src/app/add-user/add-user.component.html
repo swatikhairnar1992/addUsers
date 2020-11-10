@@ -1,0 +1,91 @@
+<div class="col-sm-12">
+    <div class="cols-sm-12 d-flex">
+        <div class="col-sm-6 text-left" style="white-space: nowrap;">
+            <h1 mat-dialog-title>Add New User</h1>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button (click)="onNoClick()">X</button>
+        </div>
+    </div>
+
+
+    <div mat-dialog-content>
+        <div class="col-sm-12 d-flex">
+            <div class="col-sm-6">
+                <mat-label>Full Name</mat-label>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field>
+                    <input matInput name="fullName" [(ngModel)]="addUserObj.fullName">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-sm-12 d-flex">
+            <div class="col-sm-6">
+                <mat-label>Choose DOB</mat-label>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="picker" name="dob" [(ngModel)]="addUserObj.dob">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 d-flex">
+            <div class="col-sm-6">
+                <mat-label>Languages</mat-label>
+            </div>
+            <div class="col-sm-6">
+                <mat-form-field class="example-full-width">
+                    <mat-select [formControl]="languages" name="language" [(ngModel)]="addUserObj.languages" multiple>
+                        <mat-select-trigger>
+                            {{addUserObj.language ? addUserObj.language[0] : ''}}
+                            <span *ngIf="addUserObj.language?.length > 1" class="example-additional-selection">
+                                (+{{addUserObj.language.length - 1}}
+                                {{addUserObj.language?.length === 2 ? 'other' : 'others'}})
+                            </span>
+                        </mat-select-trigger>
+                        <mat-option *ngFor="let language of languageList" [value]="language">{{language}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="col-sm-12 d-flex">
+            <div class="col-sm-6">
+                Gender
+            </div>
+            <div class="col-sm-6">
+                <div class="form-check">
+                    <label class="form-check-label" for="radio2">
+                        <input type="radio" class="form-check-input" id="radio2" name="gender"
+                            [(ngModel)]="addUserObj.gender" value="Female">Female
+                    </label>
+                    <label class="form-check-label" for="radio2">
+                        <input type="radio" class="form-check-input" id="radio2" name="gender"
+                            [(ngModel)]="addUserObj.gender" value="Male">Male
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 d-flex">
+            <div class="col-sm-6">
+                About
+            </div>
+            <div class="col-sm-6">
+                <textarea name="about" [(ngModel)]="addUserObj.about"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12 text-center">
+        <!-- <div mat-dialog-actions> -->
+            <button mat-button type="submit" (click)="addUser()">Save User</button>
+        <!-- </div> -->
+    </div>
+</div>

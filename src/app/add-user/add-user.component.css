@@ -1,0 +1,16 @@
+:host ::ng-deep .mat-dialog-container {
+    width: 40rem !important;
+}
+
+label {
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    width: 163px;
+}
